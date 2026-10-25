@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mirko Martinez | Developer Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="logo">
+                <span class="tag">&lt;M/&gt;</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#inicio" class="nav-link"><span class="mono">01.</span> Inicio</a></li>
+                    <li><a href="#sobre-mi" class="nav-link"><span class="mono">02.</span> Sobre Mí</a></li>
+                    <li><a href="#proyectos" class="nav-link"><span class="mono">03.</span> Proyectos</a></li>
+                    <li><a href="#contacto" class="nav-link"><span class="mono">04.</span> Contacto</a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <p class="mono">Status: Online</p>
+            </div>
+        </aside>
+
+        <!-- CONTENIDO PRINCIPAL -->
+        <main class="content">
+            <section id="inicio" class="fade-in">
+                <div class="hero">
+                    <img src="img/perfil.jpg" alt="Mirko Martinez" class="avatar">
+                    <p class="mono accent-text">Hola mundo, soy</p>
+                    <h1 class="title">Mirko Martinez.</h1>
+                    <h2 class="subtitle">Construyo soluciones digitales.</h2>
+                    <p class="hero-desc">Estudiante de Programación & Community Manager especializado en diseñar y desarrollar arquitecturas escalables, integrando frontend, backend y bases de datos.</p>
+                    <div class="hero-buttons">
+                        <a href="#proyectos" class="btn btn-primary">Explorar proyectos</a>
+                        <a href="#contacto" class="btn btn-outline">Contactar</a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="sobre-mi" class="fade-in">
+                <h2 class="section-title"><span class="mono accent-text">02.</span> Sobre Mí</h2>
+                <div class="bento-grid-about">
+                    <article class="bento-card">
+                        <p>Actualmente curso la carrera de Técnico Superior en Programación e Innovación Tecnológica. A la par, me desempeño en De Marchi Propiedades como Community Manager, editor audiovisual y asesor de ventas, combinando habilidades técnicas con comunicación estratégica.</p>
+                    </article>
+                    <article class="bento-card glass">
+                        <h3>Stack Tecnológico</h3>
+                        <div class="skills-tags">
+                            <span class="tag">HTML/CSS/JS</span>
+                            <span class="tag">Node.js</span>
+                            <span class="tag">Express</span>
+                            <span class="tag">MongoDB</span>
+                            <span class="tag">Python (Django)</span>
+                            <span class="tag">Java</span>
+                            <span class="tag">PHP</span>
+                            <span class="tag">Git/GitHub</span>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section id="proyectos" class="fade-in">
+                <h2 class="section-title"><span class="mono accent-text">03.</span> Proyectos Destacados</h2>
+                <div id="grid-proyectos" class="bento-grid-projects">
+                    <p class="mono muted">Fetching data from server...</p>
+                </div>
+            </section>
+
+            <section id="contacto" class="fade-in">
+                <h2 class="section-title"><span class="mono accent-text">04.</span> Enviar Mensaje</h2>
+                <div class="form-container">
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Tu correo electrónico" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="mensaje" name="mensaje" placeholder="¿En qué puedo ayudarte?" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Enviar Petición</button>
+                    </form>
+                    <div id="form-message"></div>
+                </div>
+            </section>
+
+            <footer>
+                <p class="mono muted">&copy; 2026 Mirko Martinez. Diseñado y desarrollado a mano.</p>
+            </footer>
+        </main>
+    </div>
+
+    <!-- NOTA: Este archivo llama a script.js -->
+    <script src="js/script.js"></script>
+</body>
+</html>

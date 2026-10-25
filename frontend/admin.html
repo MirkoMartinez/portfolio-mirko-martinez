@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Console | Mirko Martinez</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="logo">
+                <span class="tag">&lt;ADMIN/&gt;</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#proyectos" class="nav-link"><span class="mono">01.</span> Lista de Proyectos</a></li>
+                    <li><a href="#gestion" class="nav-link"><span class="mono">02.</span> Gestión CRUD</a></li>
+                    <li><a href="index.html" class="nav-link" style="color: var(--accent);"><span class="mono"><-</span> Volver al sitio público</a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <p class="mono" style="color: #ef4444;">Status: Modo Administrador</p>
+            </div>
+        </aside>
+
+        <main class="content">
+            <section id="proyectos"></section>
+                <h2 class="section-title"><span class="mono accent-text">01.</span> Base de Datos de Proyectos</h2>
+                <div id="grid-proyectos" class="bento-grid-projects">
+                    <p class="mono muted">Fetching data from server...</p>
+                </div>
+            </section>
+
+            <section id="gestion">
+                <h2 class="section-title"><span class="mono accent-text">02.</span> Admin Console (CRUD)</h2>
+                <div class="form-container glass">
+                    <form id="crud-form">
+                        <input type="hidden" id="proyecto-id">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="titulo" class="mono">const <span class="accent-text">nombre</span> =</label>
+                                <input type="text" id="titulo" placeholder='"Nombre del proyecto"' required>
+                            </div>
+                            <div class="form-group">
+                                <label for="estado" class="mono">let <span class="accent-text">estado</span> =</label>
+                                <select id="estado" required>
+                                    <option value="Publicado">Publicado</option>
+                                    <option value="En desarrollo">En desarrollo</option>
+                                    <option value="Privado">Privado</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="descripcion" class="mono">const <span class="accent-text">descripcion</span> =</label>
+                            <textarea id="descripcion" placeholder='"Descripción detallada..."' required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="tecnologias" class="mono">const <span class="accent-text">stack</span> =</label>
+                            <input type="text" id="tecnologias" placeholder='HTML, CSS, Node.js' required>
+                        </div>
+                        <div class="form-group">
+                            <label for="imagenUrl" class="mono">const <span class="accent-text">imagen</span> =</label>
+                            <input type="text" id="imagenUrl" placeholder='"img/proyecto.jpg"' required>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary" id="btn-guardar">Ejecutar (Guardar)</button>
+                            <button type="button" class="btn btn-outline hidden" id="btn-cancelar">Abortar (Cancelar)</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- NOTA: Este archivo llama a admin.js -->
+    <script src="js/admin.js"></script>
+</body>
+</html>
