@@ -18,7 +18,7 @@
                 <ul>
                     <li><a href="#proyectos" class="nav-link"><span class="mono">01.</span> Lista de Proyectos</a></li>
                     <li><a href="#gestion" class="nav-link"><span class="mono">02.</span> Gestión CRUD</a></li>
-                    <li><a href="index.html" class="nav-link" style="color: var(--accent);"><span class="mono"><-</span> Volver al sitio público</a></li>
+                    <li><a href="index.html" class="nav-link" style="color: var(--accent);"><span class="mono">&lt;-</span> Volver al sitio público</a></li>
                 </ul>
             </nav>
             <div class="sidebar-footer">
@@ -27,7 +27,7 @@
         </aside>
 
         <main class="content">
-            <section id="proyectos"></section>
+            <section id="proyectos">
                 <h2 class="section-title"><span class="mono accent-text">01.</span> Base de Datos de Proyectos</h2>
                 <div id="grid-proyectos" class="bento-grid-projects">
                     <p class="mono muted">Fetching data from server...</p>
@@ -37,8 +37,10 @@
             <section id="gestion">
                 <h2 class="section-title"><span class="mono accent-text">02.</span> Admin Console (CRUD)</h2>
                 <div class="form-container glass">
-                    <form id="crud-form">
+                    <form id="crud-form" enctype="multipart/form-data">
                         <input type="hidden" id="proyecto-id">
+                        <input type="hidden" id="imagenUrlActual">
+
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="titulo" class="mono">const <span class="accent-text">nombre</span> =</label>
@@ -62,8 +64,9 @@
                             <input type="text" id="tecnologias" placeholder='HTML, CSS, Node.js' required>
                         </div>
                         <div class="form-group">
-                            <label for="imagenUrl" class="mono">const <span class="accent-text">imagen</span> =</label>
-                            <input type="text" id="imagenUrl" placeholder='"img/proyecto.jpg"' required>
+                            <label for="imagenFile" class="mono">const <span class="accent-text">imagen</span> =</label>
+                            <input type="file" id="imagenFile" accept="image/*">
+                            <small class="mono muted" style="display:block; margin-top:0.5rem;" id="imagen-info">// Selecciona una imagen desde tu PC</small>
                         </div>
                         <div class="form-actions">
                             <button type="submit" class="btn btn-primary" id="btn-guardar">Ejecutar (Guardar)</button>
@@ -75,7 +78,6 @@
         </main>
     </div>
 
-    <!-- NOTA: Este archivo llama a admin.js -->
     <script src="js/admin.js"></script>
 </body>
 </html>

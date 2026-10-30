@@ -4,6 +4,9 @@ const gridProyectos = document.getElementById('grid-proyectos');
 const formCrud = document.getElementById('crud-form');
 const btnCancelar = document.getElementById('btn-cancelar');
 const inputId = document.getElementById('proyecto-id');
+const inputImagenActual = document.getElementById('imagenUrlActual');
+const imagenFileInput = document.getElementById('imagenFile');
+const imagenInfo = document.getElementById('imagen-info');
 
 document.addEventListener('DOMContentLoaded', cargarProyectos);
 
@@ -47,28 +50,34 @@ async function cargarProyectos() {
 formCrud.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const proyectoData = {
-        nombre: document.getElementById('titulo').value,
-        descripcion: document.getElementById('descripcion').value,
-        tecnologias: document.getElementById('tecnologias').value.split(',').map(tech => tech.trim()),
-        imagenUrl: document.getElementById('imagenUrl').value,
-        estado: document.getElementById('estado').value
-    };
-
     const id = inputId.value;
-    
+    const formData = new FormData();
+
+    formData.append('nombre', document.getElementById('titulo').value);
+    formData.append('descripcion', document.getElementById('descripcion').value);
+    formData.append('tecnologias', document.getElementById('tecnologias').value);
+    formData.append('estado', document.getElementById('estado').value);
+
+    if (imagenFileInput.files[0]) {
+        formData.append('imagen', imagenFileInput.files[0]);
+    } else if (inputImagenActual.value) {
+        formData.append('imagenUrlActual', inputImagenActual.value);
+    }
+
     try {
         if (id) {
             await fetch(`${API_URL}/${id}`, {
                 method: 'PUT',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(proyectoData)
+                body: formData
             });
         } else {
+            if (!imagenFileInput.files[0]) {
+                alert('Por favor selecciona una imagen para el nuevo proyecto.');
+                return;
+            }
             await fetch(API_URL, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(proyectoData)
+                body: formData
             });
         }
         
@@ -92,12 +101,13 @@ async function eliminarProyecto(id) {
 
 function prepararEdicion(id, nombre, desc, tech, img, estado) {
     inputId.value = id;
+    inputImagenActual.value = img;
     document.getElementById('titulo').value = nombre;
     document.getElementById('descripcion').value = desc;
     document.getElementById('tecnologias').value = tech;
-    document.getElementById('imagenUrl').value = img;
     document.getElementById('estado').value = estado;
     
+    imagenInfo.textContent = `// Imagen actual guardada. (Selecciona un archivo si deseas reemplazarla)`;
     document.getElementById('btn-guardar').textContent = 'Update (Actualizar)';
     btnCancelar.classList.remove('hidden');
     document.getElementById('gestion').scrollIntoView({ behavior: 'smooth' });
@@ -106,6 +116,8 @@ function prepararEdicion(id, nombre, desc, tech, img, estado) {
 function limpiarFormulario() {
     formCrud.reset();
     inputId.value = '';
+    inputImagenActual.value = '';
+    imagenInfo.textContent = '// Selecciona una imagen desde tu PC';
     document.getElementById('btn-guardar').textContent = 'Ejecutar (Guardar)';
     btnCancelar.classList.add('hidden');
 }
